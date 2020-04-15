@@ -9,33 +9,33 @@ public class MyFirstVerticle extends AbstractVerticle {
 	@Override
 
 	public void start(Future<Void> startFuture) {
-		vertx.createHttpServer().requestHandler(r -> {
-			r.response().end("<h1>Bienvenidoa mi primeraaplicacionVert.x3</h1>"
-					+ "Alabado sea cristo que de alguna manera permite que esta patata en forma de portatil corra eclipse");
-		}).listen(8088, result -> {
-			if (result.succeeded()) {
-				System.out.println("Pillo sitio!!!");
-			} else {
-				System.out.println("Menudo fail shurmano");
-			}
-		});
+//		vertx.createHttpServer().requestHandler(r -> {
+//			r.response().end("<h1>Bienvenidoa mi primeraaplicacionVert.x3</h1>"
+//					+ "Alabado sea cristo que de alguna manera permite que esta patata en forma de portatil corra eclipse");
+//		}).listen(8088, result -> {
+//			if (result.succeeded()) {
+//				System.out.println("Pillo sitio!!!");
+//			} else {
+//				System.out.println("Menudo fail shurmano");
+//			}
+//		});
 		//vertx.deployVerticle(MySencondVerticle.class.getName());
 		//vertx.deployVerticle(MyThirdVerticle.class.getName());
-		vertx.deployVerticle(MyTestVerticle.class.getName());
-		vertx.deployVerticle(WorkerVerticle.class.getName());
-		EventBus eventBus = vertx.eventBus();
-		vertx.setPeriodic(4000, action -> {
-			eventBus.send("mensaje p2p", "¿hay alguien ahí?", reply -> {
-				if (reply.succeeded()) {
-					String replyMessage = (String) reply.result().body();
-					//System.out.println("Respuesta:" + replyMessage);
-				} else {
-					//System.out.println("No ha habido respuesta");
-				}
-			});
-		});
-		vertx.setPeriodic(4000, action->{
-			eventBus.publish("mensaje_broadcast", "Esto es un mensaje broadcast");
-		});
+		vertx.deployVerticle(DatabaseVerticle.class.getName());
+		//vertx.deployVerticle(WorkerVerticle.class.getName());
+//		EventBus eventBus = vertx.eventBus();
+//		vertx.setPeriodic(4000, action -> {
+//			eventBus.send("mensaje p2p", "¿hay alguien ahí?", reply -> {
+//				if (reply.succeeded()) {
+//					String replyMessage = (String) reply.result().body();
+//					//System.out.println("Respuesta:" + replyMessage);
+//				} else {
+//					//System.out.println("No ha habido respuesta");
+//				}
+//			});
+//		});
+//		vertx.setPeriodic(4000, action->{
+//			eventBus.publish("mensaje_broadcast", "Esto es un mensaje broadcast");
+//		});
 	}
 }

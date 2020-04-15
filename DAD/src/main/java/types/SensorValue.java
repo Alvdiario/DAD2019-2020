@@ -9,7 +9,7 @@ public class SensorValue {
 	private int g_value_x;
 	private int g_value_y;
 	private int g_value_z;
-
+	private Long timestamp;
 	@Override
 	public String toString() {
 		return "SensorValue [idsensor_valor_mpu6050=" + idsensor_valor_mpu6050 + ", idsensor=" + idsensor
@@ -128,11 +128,11 @@ public class SensorValue {
 		this.g_value_z = g_value_z;
 	}
 
-	public long getTimestamp() {
+	public Long getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(long timestamp) {
+	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
 	}
 
@@ -141,7 +141,7 @@ public class SensorValue {
 	}
 
 	public SensorValue(int idsensor_valor_mpu6050, int idsensor, int a_value_x, int a_value_y, int a_value_z,
-			int g_value_x, int g_value_y, int g_value_z, long timestamp) {
+			int g_value_x, int g_value_y, int g_value_z ,Long timestamp) {
 		super();
 		this.idsensor_valor_mpu6050 = idsensor_valor_mpu6050;
 		this.idsensor = idsensor;
@@ -154,6 +154,6 @@ public class SensorValue {
 		this.timestamp = timestamp;
 	}
 
-	private long timestamp;
+
 
 }

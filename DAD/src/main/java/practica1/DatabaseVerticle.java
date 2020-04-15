@@ -15,7 +15,7 @@ import io.vertx.sqlclient.RowSet;
 import types.SensorValue;
 
 public class DatabaseVerticle extends AbstractVerticle {
-	MySQLPool mySQLPool;
+	private MySQLPool mySQLPool;
 
 	@Override
 	public void start(Promise<Void> startPromise) {
@@ -25,7 +25,7 @@ public class DatabaseVerticle extends AbstractVerticle {
 		mySQLPool = MySQLPool.pool(vertx, mySQLConnectOptions, poolOptions);
 
 		Router router = Router.router(vertx);
-		vertx.createHttpServer().requestHandler(router::handle).listen(8080, result -> {
+		vertx.createHttpServer().requestHandler(router::handle).listen(8081, result -> {
 			if (result.succeeded()) {
 				startPromise.complete();
 			} else {
@@ -33,14 +33,22 @@ public class DatabaseVerticle extends AbstractVerticle {
 			}
 
 		});
-		router.get("/api/sensor/values/:idSensor").handler(this::getValueBySensor);
+		
+//TODO		router.get("/api/sensor/values/dispositivo/:idsensor").handler(this::getDispositivo);
+		//TODO		router.get("/api/sensor/values/girac/:idsensor").handler(this::getAcelerGirosc);
+		//TODO		router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
+		router.get("/api/sensor/values/mpu6050/:idsensor").handler(this::getValueBySensor);
+		//TODO		router.get("/api/sensor/values/usuario/:idsensor").handler(this::getUsuario);
+
+		
+		//router.get("/api/sensor/values/:idsensor").handler(this::getValueBySensor);
 	}
 private void getValueBySensor(RoutingContext routingContext) {
-	mySQLPool.query("SELECT * FROM dadproyecto.sensor_valor_mpu6050 WHERE idsensor= "+ routingContext.request().getParam("idsensor"),
+	mySQLPool.query("SELECT * FROM dadproyecto.sensor_valor_mpu6050 WHERE idsensor = "+ routingContext.request().getParam("idsensor"),
 			res->{
 				 if(res.succeeded()) {
 					 RowSet<Row> resultSet = res.result();
-					 System.out.println("El némero de elementos obtenidos es "+ resultSet.size());
+					 System.out.println("El numero de elementos obtenidos es "+ resultSet.size());
 					 JsonArray result = new JsonArray();
 					 for (Row row : resultSet) {
 						 result.add(JsonObject.mapFrom(new SensorValue(row.getInteger("idsensor_valor_mpu6050"),
@@ -51,7 +59,7 @@ private void getValueBySensor(RoutingContext routingContext) {
 								 row.getInteger("g_value_x"),
 								 row.getInteger("g_value_y"),
 								 row.getInteger("g_value_z"),
-								 row.getInteger("timestamp")) ));
+								 row.getLong("timesstamp"))));
 					 }
 					 routingContext.response().setStatusCode(200).putHeader("content-type", "application/json").end(result.encodePrettily());
 				 }else {
