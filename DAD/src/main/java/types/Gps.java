@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Temperature {
+public class Gps {
 
 	private static final AtomicInteger Counter = new AtomicInteger();
 
@@ -18,7 +18,7 @@ public class Temperature {
 
 	@JsonCreator
 
-	public Temperature(
+	public Gps(
 			@JsonProperty("value") float value, 
 			@JsonProperty("timestamp") long timestamp,
 			@JsonProperty("location") String location,
@@ -31,7 +31,7 @@ public class Temperature {
 	}
 		
 		
-		public Temperature() {
+		public Gps() {
 			super();
 			this.id=Counter.getAndIncrement();
 			this.value = 0;
@@ -104,7 +104,7 @@ public class Temperature {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Temperature other = (Temperature) obj;
+		Gps other = (Gps) obj;
 		if (accuracy != other.accuracy)
 			return false;
 		if (location == null) {

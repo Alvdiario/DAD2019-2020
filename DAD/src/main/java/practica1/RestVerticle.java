@@ -6,7 +6,7 @@ import io.vertx.core.json.Json;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import types.Temperature;
+import types.Gps;
 
 public class RestVerticle extends AbstractVerticle {
 	@Override
@@ -24,7 +24,7 @@ public class RestVerticle extends AbstractVerticle {
 
 	public void getTemperature(RoutingContext routingContext) {
 
-		Temperature temperature = new Temperature();
+		Gps temperature = new Gps();
 		temperature.setValue(37.8f);
 		temperature.setAccuracy(8);
 		temperature.setLocation("Kitchen");
@@ -35,7 +35,7 @@ public class RestVerticle extends AbstractVerticle {
 
 	public void getHumidity(RoutingContext routingContext) {
 
-		Temperature temperature = new Temperature();
+		Gps temperature = new Gps();
 		temperature.setValue(37.8f);
 		temperature.setAccuracy(8);
 		temperature.setLocation("Kitchen");

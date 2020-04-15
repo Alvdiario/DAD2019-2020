@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Luminosity {
+public class AcelerGirosc {
 
 	private static final AtomicInteger Counter = new AtomicInteger();
 
@@ -18,7 +18,7 @@ public class Luminosity {
 
 	@JsonCreator
 
-	public Luminosity(@JsonProperty("value") float value, @JsonProperty("timestamp") long timestamp,
+	public AcelerGirosc(@JsonProperty("value") float value, @JsonProperty("timestamp") long timestamp,
 			@JsonProperty("location") String location, @JsonProperty("accuracy") int accuracy) {
 		super();
 		this.id = Counter.getAndIncrement();
@@ -90,7 +90,7 @@ public class Luminosity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Luminosity other = (Luminosity) obj;
+		AcelerGirosc other = (AcelerGirosc) obj;
 		if (accuracy != other.accuracy)
 			return false;
 		if (location == null) {

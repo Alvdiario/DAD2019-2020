@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Humidity {
+public class Dispositivo {
 
 	private static final AtomicInteger Counter = new AtomicInteger();
 
@@ -18,7 +18,7 @@ public class Humidity {
 
 	@JsonCreator
 
-	public Humidity(@JsonProperty("value") float value, @JsonProperty("timestamp") long timestamp,
+	public Dispositivo(@JsonProperty("value") float value, @JsonProperty("timestamp") long timestamp,
 			@JsonProperty("location") String location, @JsonProperty("accuracy") int accuracy) {
 		super();
 		this.id = Counter.getAndIncrement();
@@ -90,7 +90,7 @@ public class Humidity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Humidity other = (Humidity) obj;
+		Dispositivo other = (Dispositivo) obj;
 		if (accuracy != other.accuracy)
 			return false;
 		if (location == null) {
