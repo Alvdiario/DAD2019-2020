@@ -1,122 +1,59 @@
 package types;
 
-import java.util.Calendar;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Gps {
-
-	private static final AtomicInteger Counter = new AtomicInteger();
-
-	private int id;
-	private float value;
-	private long timestamp;
-	private String location;
-	private int accuracy;
-
-	@JsonCreator
-
-	public Gps(
-			@JsonProperty("value") float value, 
-			@JsonProperty("timestamp") long timestamp,
-			@JsonProperty("location") String location,
-			@JsonProperty("accuracy") int accuracy) {
-		super();
-		this.id=Counter.getAndIncrement();
-		this.value = value;
-		this.timestamp = timestamp;
-		this.accuracy = accuracy;
-	}
-		
-		
-		public Gps() {
-			super();
-			this.id=Counter.getAndIncrement();
-			this.value = 0;
-			this.timestamp = Calendar.getInstance().getTimeInMillis();		
-		
-//		Calendar calendar =Calendar.getInstance(); 
-//		calendar.set(Calendar.DAY_OF_MONTH,25);
-//		calendar.set(Calendar.MONTH,Calendar.JANUARY);
-//		calendar.set(Calendar.HOUR,22);		
-//		calendar.set(Calendar.MINUTE,15);
-//		this.timestamp=calendar.getTimeInMillis();
-				
-		this.location = "";
-		this.accuracy = 0;
+	private Integer idsensor_valor_mpu6050;
+	private Integer idsensor;
+	private String localizacion;
 	
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public float getValue() {
-		return value;
-	}
-
-	public void setValue(float value) {
-		this.value = value;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public int getAccuracy() {
-		return accuracy;
-	}
-
-	public void setAccuracy(int accuracy) {
-		this.accuracy = accuracy;
-	}
-
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + accuracy;
-		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + (int) (timestamp ^ (timestamp >>> 32));
-		result = prime * result + Float.floatToIntBits(value);
-		return result;
+	public String toString() {
+		return "SensorValue [idsensor_valor_mpu6050=" + idsensor_valor_mpu6050 + ", idsensor=" + idsensor
+				+ ", Localizacion" + localizacion +  "]";
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Gps other = (Gps) obj;
-		if (accuracy != other.accuracy)
-			return false;
-		if (location == null) {
-			if (other.location != null)
-				return false;
-		} else if (!location.equals(other.location))
-			return false;
-		if (timestamp != other.timestamp)
-			return false;
-		if (Float.floatToIntBits(value) != Float.floatToIntBits(other.value))
-			return false;
-		return true;
+
+
+	public Gps() {
+		super();
 	}
+
+	public Gps(Integer idsensor_valor_mpu6050, Integer idsensor, String localizacion) {
+		super();
+		this.idsensor_valor_mpu6050 = idsensor_valor_mpu6050;
+		this.idsensor = idsensor;
+		this.localizacion =localizacion;
+		
+	}
+
+
+
+	public int getIdsensor_valor_mpu6050() {
+		return idsensor_valor_mpu6050;
+	}
+
+	public void setIdsensor_valor_mpu6050(int idsensor_valor_mpu6050) {
+		this.idsensor_valor_mpu6050 = idsensor_valor_mpu6050;
+	}
+	public int getIdsensor() {
+		return idsensor;
+	}
+	public void setIdsensor(int idsensor) {
+		this.idsensor = idsensor;
+	}
+
+	public String getLocalizacion() {
+		return localizacion;
+	}
+
+	public void setLocalizacion(String localizacion) {
+		this.localizacion = localizacion;
+	}
+
+	
+	
+
+
 
 }

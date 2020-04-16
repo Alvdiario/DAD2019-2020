@@ -12,6 +12,7 @@ import io.vertx.mysqlclient.MySQLPool;
 import io.vertx.sqlclient.PoolOptions;
 import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.RowSet;
+import types.Gps;
 import types.SensorValue;
 
 public class DatabaseVerticle extends AbstractVerticle {
@@ -35,8 +36,7 @@ public class DatabaseVerticle extends AbstractVerticle {
 		});
 		
 //TODO		router.get("/api/sensor/values/dispositivo/:idsensor").handler(this::getDispositivo);
-		//TODO		router.get("/api/sensor/values/girac/:idsensor").handler(this::getAcelerGirosc);
-		//TODO		router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
+				router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
 		router.get("/api/sensor/values/mpu6050/:idsensor").handler(this::getValueBySensor);
 		//TODO		router.get("/api/sensor/values/usuario/:idsensor").handler(this::getUsuario);
 
@@ -51,7 +51,8 @@ private void getValueBySensor(RoutingContext routingContext) {
 					 System.out.println("El numero de elementos obtenidos es "+ resultSet.size());
 					 JsonArray result = new JsonArray();
 					 for (Row row : resultSet) {
-						 result.add(JsonObject.mapFrom(new SensorValue(row.getInteger("idsensor_valor_mpu6050"),
+						 result.add(JsonObject.mapFrom(new SensorValue(
+								 row.getInteger("idsensor_valor_mpu6050"),
 								 row.getInteger("idsensor"),
 								 row.getInteger("a_value_x"),
 								 row.getInteger("a_value_y"),
@@ -69,4 +70,30 @@ private void getValueBySensor(RoutingContext routingContext) {
 		
 	});
 }
+
+private void getGps(RoutingContext routingContext) {
+	mySQLPool.query("SELECT * FROM dadproyecto.sensor_valor_gps WHERE idsensor = "+ routingContext.request().getParam("idsensor"),
+			res->{
+				 if(res.succeeded()) {
+					 RowSet<Row> resultSet = res.result();
+					 System.out.println("El numero de elementos obtenidos es "+ resultSet.size());
+					 JsonArray result = new JsonArray();
+					 for (Row row : resultSet) {
+						 result.add(JsonObject.mapFrom(new Gps(
+								 row.getInteger("idsensor_valor_gps"),
+								 row.getInteger("idsensor"),
+								 row.getString("value")
+								 )));
+					 }
+					 routingContext.response().setStatusCode(200).putHeader("content-type", "application/json").end(result.encodePrettily());
+				 }else {
+					 routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+						.end((JsonObject.mapFrom(res.cause()).encodePrettily()));
+				 }
+		
+	});
+}
+
+
+
 }

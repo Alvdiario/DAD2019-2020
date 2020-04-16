@@ -9,11 +9,11 @@ import io.vertx.core.json.Json;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
-import types.Gps;
+import types.Temperature;
 
 public class DadVerticleApiRest extends AbstractVerticle {
 
-	private Map<Integer, Gps> elements = new LinkedHashMap<>();
+	private Map<Integer, Temperature> elements = new LinkedHashMap<>();
 
 	@Override
 	public void start(Future<Void> startFuture) {
@@ -34,11 +34,11 @@ public class DadVerticleApiRest extends AbstractVerticle {
 	}
 
 	private void createSomeData() {
-		Gps temp1 = new Gps(37.8f, 8, "cocina",10);
+		Temperature temp1 = new Temperature(37.8f, 8, "cocina",10);
 		elements.put(temp1.getId(), temp1);
-		Gps temp2 = new Gps(37.8f, 8, "cocina",10);
+		Temperature temp2 = new Temperature(37.8f, 8, "cocina",10);
 		elements.put(temp2.getId(), temp2);
-		Gps temp3 = new Gps(37.8f, 8, "cocina",10);
+		Temperature temp3 = new Temperature(37.8f, 8, "cocina",10);
 		elements.put(temp3.getId(), temp3);
 	}
 
@@ -48,7 +48,7 @@ public class DadVerticleApiRest extends AbstractVerticle {
 	}
 
 	private void addOne(RoutingContext routingContext) {
-		final Gps element = Json.decodeValue(routingContext.getBodyAsString(), Gps.class);
+		final Temperature element = Json.decodeValue(routingContext.getBodyAsString(), Temperature.class);
 		elements.put(element.getId(), element);
 		routingContext.response().setStatusCode(201).putHeader("content-type", "application/json; charset=utf-8")
 				.end(Json.encodePrettily(element));
@@ -56,8 +56,8 @@ public class DadVerticleApiRest extends AbstractVerticle {
 	
 	private void postOne(RoutingContext routingContext) {
 		int id = Integer.parseInt(routingContext.request().getParam("elementid"));
-		Gps ds = elements.get(id);
-		final Gps element = Json.decodeValue(routingContext.getBodyAsString(), Gps.class);
+		Temperature ds = elements.get(id);
+		final Temperature element = Json.decodeValue(routingContext.getBodyAsString(), Temperature.class);
 		ds.setValue(element.getValue());
 		ds.setTimestamp(element.getTimestamp());
 		ds.setAccuracy(element.getAccuracy());
@@ -67,7 +67,7 @@ public class DadVerticleApiRest extends AbstractVerticle {
 	}
 
 	private void deleteOne(RoutingContext routingContext) {
-		final Gps element = Json.decodeValue(routingContext.getBodyAsString(), Gps.class);
+		final Temperature element = Json.decodeValue(routingContext.getBodyAsString(), Temperature.class);
 		elements.remove(element.getId());
 		routingContext.response().setStatusCode(201).putHeader("content-type", "application/json; charset=utf-8")
 				.end(Json.encodePrettily(element));

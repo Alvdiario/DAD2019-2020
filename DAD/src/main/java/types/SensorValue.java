@@ -154,6 +154,14 @@ public class SensorValue {
 		this.timestamp = timestamp;
 	}
 
+	public SensorValue(int idsensor_valor_mpu6050, int idsensor,int a_value_x, int a_value_y, int a_value_z) {
+		this.idsensor_valor_mpu6050 = idsensor_valor_mpu6050;
+		this.idsensor = idsensor;
+		this.a_value_x = a_value_x;
+		this.a_value_y = a_value_y;
+		this.a_value_z = a_value_z;
+	}
+
 
 
 }

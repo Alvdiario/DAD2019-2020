@@ -5680,3 +5680,883 @@ java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent
 15:42:11,868 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@78a82501
 15:42:11,963 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
 15:42:11,964 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
+20:31:28,728 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+20:31:28,734 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+20:31:28,734 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+20:31:28,752 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+20:31:28,753 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+20:31:28,763 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+20:31:28,797 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+20:31:28,797 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+20:31:28,815 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+20:31:28,818 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+20:31:28,819 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+20:31:28,822 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+20:31:28,823 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+20:31:28,823 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+20:31:28,825 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:31:28,830 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+20:31:28,833 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:31:28,835 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+20:31:28,836 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+20:31:28,866 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+20:31:28,867 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+20:31:28,867 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+20:31:28,869 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+20:31:28,869 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+20:31:28,871 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+20:31:28,871 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+20:31:28,883 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+20:31:29,845 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+20:31:29,854 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+20:31:29,854 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+20:31:30,257 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+20:31:30,258 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+20:31:30,442 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+20:31:30,443 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+20:31:30,444 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+20:31:30,444 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+20:31:30,444 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+20:31:30,445 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+20:31:30,445 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+20:31:30,445 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+20:31:30,445 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+20:31:30,445 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+20:31:30,446 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+20:31:30,446 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+20:31:30,446 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+20:31:30,926 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 12188 (auto-detected)
+20:31:31,343 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+20:31:31,367 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+20:31:31,368 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+20:31:31,368 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+20:31:57,587 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:96 - -Dio.netty.recycler.maxCapacityPerThread: 4096
+20:31:57,587 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:97 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+20:31:57,587 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:98 - -Dio.netty.recycler.linkCapacity: 16
+20:31:57,587 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:99 - -Dio.netty.recycler.ratio: 8
+20:31:57,598 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:62 - -Dio.netty.buffer.checkAccessible: true
+20:31:57,598 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:63 - -Dio.netty.buffer.checkBounds: true
+20:31:57,599 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@64265006
+20:31:57,688 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
+20:31:57,688 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
+20:33:28,024 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+20:33:28,031 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+20:33:28,031 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+20:33:28,051 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+20:33:28,052 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+20:33:28,064 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+20:33:28,101 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+20:33:28,101 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+20:33:28,122 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+20:33:28,124 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+20:33:28,125 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+20:33:28,127 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+20:33:28,128 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+20:33:28,129 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+20:33:28,130 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:33:28,135 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+20:33:28,138 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:33:28,141 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+20:33:28,141 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+20:33:28,160 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+20:33:28,161 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+20:33:28,161 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+20:33:28,162 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+20:33:28,163 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+20:33:28,164 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+20:33:28,164 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+20:33:28,173 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+20:33:29,122 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+20:33:29,129 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+20:33:29,130 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+20:33:29,534 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+20:33:29,535 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+20:33:29,709 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+20:33:29,710 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+20:33:29,710 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+20:33:29,710 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+20:33:29,710 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+20:33:29,711 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+20:33:29,712 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+20:33:30,165 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 13788 (auto-detected)
+20:33:30,579 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+20:33:30,602 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+20:33:30,602 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+20:33:30,602 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+20:33:34,276 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:96 - -Dio.netty.recycler.maxCapacityPerThread: 4096
+20:33:34,276 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:97 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+20:33:34,276 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:98 - -Dio.netty.recycler.linkCapacity: 16
+20:33:34,276 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:99 - -Dio.netty.recycler.ratio: 8
+20:33:34,284 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:62 - -Dio.netty.buffer.checkAccessible: true
+20:33:34,285 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:63 - -Dio.netty.buffer.checkBounds: true
+20:33:34,286 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@78a82501
+20:33:34,366 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
+20:33:34,366 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
+20:49:24,586 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+20:49:24,591 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+20:49:24,591 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+20:49:24,608 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+20:49:24,609 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+20:49:24,617 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+20:49:24,646 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+20:49:24,646 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+20:49:24,665 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+20:49:24,667 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+20:49:24,668 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+20:49:24,670 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+20:49:24,671 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+20:49:24,672 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+20:49:24,673 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:49:24,677 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+20:49:24,681 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:49:24,682 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+20:49:24,682 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+20:49:24,700 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+20:49:24,701 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+20:49:24,701 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+20:49:24,702 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+20:49:24,702 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+20:49:24,703 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+20:49:24,704 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+20:49:24,715 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+20:49:25,627 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+20:49:25,635 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+20:49:25,635 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+20:49:26,017 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+20:49:26,018 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+20:49:26,181 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+20:49:26,183 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+20:49:26,183 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+20:49:26,183 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+20:49:26,183 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+20:49:26,183 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+20:49:26,183 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+20:49:26,184 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+20:49:26,184 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+20:49:26,184 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+20:49:26,184 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+20:49:26,184 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+20:49:26,185 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+20:49:26,637 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 16792 (auto-detected)
+20:49:27,051 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+20:49:27,073 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+20:49:27,073 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+20:49:27,074 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+20:49:39,036 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+20:49:39,042 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+20:49:39,043 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+20:49:39,062 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+20:49:39,062 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+20:49:39,071 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+20:49:39,101 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+20:49:39,101 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+20:49:39,119 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+20:49:39,121 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+20:49:39,122 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+20:49:39,124 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+20:49:39,125 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+20:49:39,126 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+20:49:39,127 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:49:39,131 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+20:49:39,134 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+20:49:39,136 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+20:49:39,136 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+20:49:39,153 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+20:49:39,153 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+20:49:39,154 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+20:49:39,155 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+20:49:39,155 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+20:49:39,156 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+20:49:39,156 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+20:49:39,165 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+20:49:40,072 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+20:49:40,080 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+20:49:40,080 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+20:49:40,475 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+20:49:40,476 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+20:49:40,645 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+20:49:40,646 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+20:49:40,647 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+20:49:40,647 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+20:49:40,647 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+20:49:40,647 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+20:49:40,648 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+20:49:40,648 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+20:49:40,648 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+20:49:40,648 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+20:49:40,649 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+20:49:40,649 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+20:49:40,649 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+20:49:41,123 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 15792 (auto-detected)
+20:49:41,530 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+20:49:41,551 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+20:49:41,552 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+20:49:41,552 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+20:49:45,068 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:96 - -Dio.netty.recycler.maxCapacityPerThread: 4096
+20:49:45,069 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:97 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+20:49:45,069 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:98 - -Dio.netty.recycler.linkCapacity: 16
+20:49:45,069 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:99 - -Dio.netty.recycler.ratio: 8
+20:49:45,078 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:62 - -Dio.netty.buffer.checkAccessible: true
+20:49:45,078 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:63 - -Dio.netty.buffer.checkBounds: true
+20:49:45,079 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@564ea9b3
+20:49:45,161 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
+20:49:45,162 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
+21:46:51,271 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+21:46:51,276 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+21:46:51,276 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+21:46:51,292 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+21:46:51,292 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+21:46:51,301 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+21:46:51,330 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+21:46:51,331 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+21:46:51,349 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+21:46:51,351 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+21:46:51,352 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+21:46:51,354 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+21:46:51,355 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+21:46:51,356 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+21:46:51,357 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+21:46:51,361 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+21:46:51,364 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+21:46:51,366 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+21:46:51,367 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+21:46:51,384 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+21:46:51,385 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+21:46:51,385 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+21:46:51,386 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+21:46:51,387 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+21:46:51,388 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+21:46:51,388 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+21:46:51,400 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+21:46:52,295 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+21:46:52,302 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+21:46:52,303 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+21:46:52,692 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+21:46:52,693 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+21:46:52,849 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+21:46:52,850 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+21:46:52,850 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+21:46:52,850 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+21:46:52,850 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+21:46:52,851 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+21:46:52,851 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+21:46:52,851 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+21:46:52,851 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+21:46:52,851 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+21:46:52,851 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+21:46:52,852 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+21:46:52,852 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+21:46:53,314 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 2868 (auto-detected)
+21:46:53,722 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+21:46:53,745 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+21:46:53,746 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+21:46:53,746 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+21:47:25,825 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:96 - -Dio.netty.recycler.maxCapacityPerThread: 4096
+21:47:25,825 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:97 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+21:47:25,825 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:98 - -Dio.netty.recycler.linkCapacity: 16
+21:47:25,826 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:99 - -Dio.netty.recycler.ratio: 8
+21:47:25,834 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:62 - -Dio.netty.buffer.checkAccessible: true
+21:47:25,834 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:63 - -Dio.netty.buffer.checkBounds: true
+21:47:25,835 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@31d9c350
+21:47:25,916 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
+21:47:25,916 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
+21:51:31,813 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+21:51:31,819 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+21:51:31,819 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+21:51:31,837 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+21:51:31,837 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+21:51:31,848 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+21:51:31,880 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+21:51:31,880 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+21:51:31,900 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+21:51:31,903 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+21:51:31,903 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+21:51:31,905 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+21:51:31,906 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+21:51:31,907 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+21:51:31,908 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+21:51:31,913 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+21:51:31,916 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+21:51:31,919 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+21:51:31,919 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+21:51:31,936 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+21:51:31,937 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+21:51:31,937 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+21:51:31,938 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+21:51:31,938 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+21:51:31,940 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+21:51:31,940 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+21:51:31,949 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+21:51:32,886 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+21:51:32,894 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+21:51:32,895 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+21:51:33,292 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+21:51:33,293 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+21:51:33,449 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+21:51:33,450 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+21:51:33,450 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+21:51:33,450 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+21:51:33,450 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+21:51:33,451 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+21:51:33,451 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+21:51:33,451 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+21:51:33,451 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+21:51:33,451 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+21:51:33,451 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+21:51:33,452 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+21:51:33,452 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+21:51:33,908 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 1128 (auto-detected)
+21:51:34,330 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+21:51:34,352 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+21:51:34,352 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+21:51:34,352 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+21:52:14,225 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:96 - -Dio.netty.recycler.maxCapacityPerThread: 4096
+21:52:14,226 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:97 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+21:52:14,226 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:98 - -Dio.netty.recycler.linkCapacity: 16
+21:52:14,227 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:99 - -Dio.netty.recycler.ratio: 8
+21:52:14,237 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:62 - -Dio.netty.buffer.checkAccessible: true
+21:52:14,237 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:63 - -Dio.netty.buffer.checkBounds: true
+21:52:14,239 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@31d9c350
+21:52:14,350 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
+21:52:14,351 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
+21:52:48,180 DEBUG main InternalLoggerFactory:newDefaultFactory:47 - Using Log4J as the default logging framework
+21:52:48,185 DEBUG main ResourceLeakDetector:<clinit>:129 - -Dio.netty.leakDetection.level: simple
+21:52:48,185 DEBUG main ResourceLeakDetector:<clinit>:130 - -Dio.netty.leakDetection.targetRecords: 4
+21:52:48,201 DEBUG main InternalThreadLocalMap:<clinit>:54 - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+21:52:48,202 DEBUG main InternalThreadLocalMap:<clinit>:57 - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+21:52:48,211 DEBUG main MultithreadEventLoopGroup:<clinit>:44 - -Dio.netty.eventLoopThreads: 16
+21:52:48,239 DEBUG main NioEventLoop:<clinit>:106 - -Dio.netty.noKeySetOptimization: false
+21:52:48,239 DEBUG main NioEventLoop:<clinit>:107 - -Dio.netty.selectorAutoRebuildThreshold: 512
+21:52:48,257 DEBUG main PlatformDependent:isWindows0:985 - Platform: Windows
+21:52:48,260 DEBUG main PlatformDependent0:explicitNoUnsafeCause0:395 - -Dio.netty.noUnsafe: false
+21:52:48,260 DEBUG main PlatformDependent0:javaVersion0:851 - Java version: 13
+21:52:48,262 DEBUG main PlatformDependent0:<clinit>:120 - sun.misc.Unsafe.theUnsafe: available
+21:52:48,263 DEBUG main PlatformDependent0:<clinit>:144 - sun.misc.Unsafe.copyMemory: available
+21:52:48,264 DEBUG main PlatformDependent0:<clinit>:182 - java.nio.Buffer.address: available
+21:52:48,265 DEBUG main PlatformDependent0:<clinit>:252 - direct buffer constructor: unavailable
+java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
+	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31)
+	at io.netty.util.internal.PlatformDependent0$4.run(PlatformDependent0.java:224)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:218)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+21:52:48,270 DEBUG main PlatformDependent0:<clinit>:313 - java.nio.Bits.unaligned: available, true
+21:52:48,273 DEBUG main PlatformDependent0:<clinit>:372 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$6 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @1f1c7bf6
+	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
+	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:642)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:559)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:334)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:312)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:325)
+	at io.netty.util.internal.PlatformDependent.isAndroid(PlatformDependent.java:272)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:92)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue0(NioEventLoop.java:285)
+	at io.netty.channel.nio.NioEventLoop.newTaskQueue(NioEventLoop.java:156)
+	at io.netty.channel.nio.NioEventLoop.<init>(NioEventLoop.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:138)
+	at io.netty.channel.nio.NioEventLoopGroup.newChild(NioEventLoopGroup.java:37)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:84)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:58)
+	at io.netty.util.concurrent.MultithreadEventExecutorGroup.<init>(MultithreadEventExecutorGroup.java:47)
+	at io.netty.channel.MultithreadEventLoopGroup.<init>(MultithreadEventLoopGroup.java:59)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:78)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:73)
+	at io.netty.channel.nio.NioEventLoopGroup.<init>(NioEventLoopGroup.java:60)
+	at io.vertx.core.net.impl.transport.Transport.eventLoopGroup(Transport.java:153)
+	at io.vertx.core.impl.VertxImpl.<init>(VertxImpl.java:143)
+	at io.vertx.core.impl.VertxImpl.vertx(VertxImpl.java:92)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:40)
+	at io.vertx.core.impl.VertxFactoryImpl.vertx(VertxFactoryImpl.java:32)
+	at io.vertx.core.Vertx.vertx(Vertx.java:85)
+	at io.vertx.core.impl.launcher.commands.ClasspathHandler.create(ClasspathHandler.java:113)
+	at io.vertx.core.impl.launcher.commands.BareCommand.startVertx(BareCommand.java:278)
+	at io.vertx.core.impl.launcher.commands.BareCommand.run(BareCommand.java:192)
+	at io.vertx.core.impl.launcher.commands.RunCommand.run(RunCommand.java:249)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.execute(VertxCommandLauncher.java:248)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:383)
+	at io.vertx.core.impl.launcher.VertxCommandLauncher.dispatch(VertxCommandLauncher.java:346)
+	at io.vertx.core.Launcher.main(Launcher.java:45)
+21:52:48,275 DEBUG main PlatformDependent0:<clinit>:385 - java.nio.DirectByteBuffer.<init>(long, int): unavailable
+21:52:48,275 DEBUG main PlatformDependent:unsafeUnavailabilityCause0:1028 - sun.misc.Unsafe: available
+21:52:48,293 DEBUG main PlatformDependent:maxDirectMemory0:1128 - maxDirectMemory: 2136997888 bytes (maybe)
+21:52:48,293 DEBUG main PlatformDependent:tmpdir0:1147 - -Dio.netty.tmpdir: C:\Users\alvar\AppData\Local\Temp (java.io.tmpdir)
+21:52:48,294 DEBUG main PlatformDependent:bitMode0:1226 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+21:52:48,295 DEBUG main PlatformDependent:<clinit>:173 - -Dio.netty.maxDirectMemory: -1 bytes
+21:52:48,295 DEBUG main PlatformDependent:<clinit>:180 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+21:52:48,296 DEBUG main CleanerJava9:<clinit>:71 - java.nio.ByteBuffer.cleaner(): available
+21:52:48,296 DEBUG main PlatformDependent:<clinit>:200 - -Dio.netty.noPreferDirect: false
+21:52:48,307 DEBUG main PlatformDependent:<clinit>:890 - org.jctools-core.MpscChunkedArrayQueue: available
+21:52:49,206 DEBUG main DefaultDnsServerAddressStreamProvider:<clinit>:82 - Default DNS servers: [/46.6.113.34:53, /212.231.6.7:53, /192.168.1.1:53] (sun.net.dns.ResolverConfiguration)
+21:52:49,214 DEBUG main NetUtil:<clinit>:139 - -Djava.net.preferIPv4Stack: false
+21:52:49,214 DEBUG main NetUtil:<clinit>:140 - -Djava.net.preferIPv6Addresses: false
+21:52:49,602 DEBUG main NetUtil:<clinit>:224 - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+21:52:49,603 DEBUG main NetUtil:run:289 - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+21:52:49,764 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:142 - -Dio.netty.allocator.numHeapArenas: 16
+21:52:49,765 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:143 - -Dio.netty.allocator.numDirectArenas: 16
+21:52:49,765 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:145 - -Dio.netty.allocator.pageSize: 8192
+21:52:49,765 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:150 - -Dio.netty.allocator.maxOrder: 11
+21:52:49,765 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:154 - -Dio.netty.allocator.chunkSize: 16777216
+21:52:49,765 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:155 - -Dio.netty.allocator.tinyCacheSize: 512
+21:52:49,766 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:156 - -Dio.netty.allocator.smallCacheSize: 256
+21:52:49,766 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:157 - -Dio.netty.allocator.normalCacheSize: 64
+21:52:49,766 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:158 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+21:52:49,766 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:159 - -Dio.netty.allocator.cacheTrimInterval: 8192
+21:52:49,766 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:160 - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+21:52:49,767 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:161 - -Dio.netty.allocator.useCacheForAllThreads: true
+21:52:49,767 DEBUG vert.x-eventloop-thread-1 PooledByteBufAllocator:<clinit>:162 - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+21:52:50,236 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:79 - -Dio.netty.processId: 10784 (auto-detected)
+21:52:50,640 DEBUG vert.x-eventloop-thread-1 DefaultChannelId:<clinit>:101 - -Dio.netty.machineId: e0:d5:5e:ff:fe:73:a8:f4 (auto-detected)
+21:52:50,662 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:85 - -Dio.netty.allocator.type: pooled
+21:52:50,662 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:94 - -Dio.netty.threadLocalDirectBufferSize: 0
+21:52:50,662 DEBUG vert.x-eventloop-thread-1 ByteBufUtil:<clinit>:97 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+21:52:51,931 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:96 - -Dio.netty.recycler.maxCapacityPerThread: 4096
+21:52:51,931 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:97 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+21:52:51,931 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:98 - -Dio.netty.recycler.linkCapacity: 16
+21:52:51,931 DEBUG vert.x-eventloop-thread-1 Recycler:<clinit>:99 - -Dio.netty.recycler.ratio: 8
+21:52:51,940 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:62 - -Dio.netty.buffer.checkAccessible: true
+21:52:51,940 DEBUG vert.x-eventloop-thread-1 AbstractByteBuf:<clinit>:63 - -Dio.netty.buffer.checkBounds: true
+21:52:51,941 DEBUG vert.x-eventloop-thread-1 ResourceLeakDetectorFactory:newResourceLeakDetector:195 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@3e94993d
+21:52:52,029 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:39 - -Dio.netty.noJdkZlibDecoder: false
+21:52:52,029 DEBUG vert.x-eventloop-thread-1 ZlibCodecFactory:<clinit>:42 - -Dio.netty.noJdkZlibEncoder: false
