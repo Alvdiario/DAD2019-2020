@@ -3,10 +3,10 @@ package types;
 public class Usuario {
 private int idusuario;
 private String nombre;
-private Long telefonoU;
-private String CorreoUsuario;
-private Long telefonoE;
-private String modeloMoto;
+private Long tlf_usuario;
+private String correo_usuario;
+private Long tlf_emergencia;
+private String modelo_moto;
 
 
 
@@ -20,14 +20,15 @@ public Usuario() {
 
 
 
-public Usuario(int idusuario, String nombre, Long telefonoU, String correoUsuario, Long telefonoE, String modeloMoto) {
+public Usuario(int idusuario, String nombre, Long tlf_usuario, String correo_usuario, Long tlf_emergencia,
+		String modelo_moto) {
 	super();
 	this.idusuario = idusuario;
 	this.nombre = nombre;
-	this.telefonoU = telefonoU;
-	CorreoUsuario = correoUsuario;
-	this.telefonoE = telefonoE;
-	this.modeloMoto = modeloMoto;
+	this.tlf_usuario = tlf_usuario;
+	this.correo_usuario = correo_usuario;
+	this.tlf_emergencia = tlf_emergencia;
+	this.modelo_moto = modelo_moto;
 }
 
 
@@ -66,64 +67,64 @@ public void setNombre(String nombre) {
 
 
 
-public Long getTelefonoU() {
-	return telefonoU;
+public Long getTlf_usuario() {
+	return tlf_usuario;
 }
 
 
 
 
 
-public void setTelefonoU(Long telefonoU) {
-	this.telefonoU = telefonoU;
+public void setTlf_usuario(Long tlf_usuario) {
+	this.tlf_usuario = tlf_usuario;
 }
 
 
 
 
 
-public String getCorreoUsuario() {
-	return CorreoUsuario;
+public String getCorreo_usuario() {
+	return correo_usuario;
 }
 
 
 
 
 
-public void setCorreoUsuario(String correoUsuario) {
-	CorreoUsuario = correoUsuario;
+public void setCorreo_usuario(String correo_usuario) {
+	this.correo_usuario = correo_usuario;
 }
 
 
 
 
 
-public Long getTelefonoE() {
-	return telefonoE;
+public Long getTlf_emergencia() {
+	return tlf_emergencia;
 }
 
 
 
 
 
-public void setTelefonoE(Long telefonoE) {
-	this.telefonoE = telefonoE;
+public void setTlf_emergencia(Long tlf_emergencia) {
+	this.tlf_emergencia = tlf_emergencia;
 }
 
 
 
 
 
-public String getModeloMoto() {
-	return modeloMoto;
+public String getModelo_moto() {
+	return modelo_moto;
 }
 
 
 
 
 
-public void setModeloMoto(String modeloMoto) {
-	this.modeloMoto = modeloMoto;
+public void setModelo_moto(String modelo_moto) {
+	this.modelo_moto = modelo_moto;
 }
 
 
@@ -134,12 +135,12 @@ public void setModeloMoto(String modeloMoto) {
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((CorreoUsuario == null) ? 0 : CorreoUsuario.hashCode());
+	result = prime * result + ((correo_usuario == null) ? 0 : correo_usuario.hashCode());
 	result = prime * result + idusuario;
-	result = prime * result + ((modeloMoto == null) ? 0 : modeloMoto.hashCode());
+	result = prime * result + ((modelo_moto == null) ? 0 : modelo_moto.hashCode());
 	result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-	result = prime * result + ((telefonoE == null) ? 0 : telefonoE.hashCode());
-	result = prime * result + ((telefonoU == null) ? 0 : telefonoU.hashCode());
+	result = prime * result + ((tlf_emergencia == null) ? 0 : tlf_emergencia.hashCode());
+	result = prime * result + ((tlf_usuario == null) ? 0 : tlf_usuario.hashCode());
 	return result;
 }
 
@@ -156,32 +157,32 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Usuario other = (Usuario) obj;
-	if (CorreoUsuario == null) {
-		if (other.CorreoUsuario != null)
+	if (correo_usuario == null) {
+		if (other.correo_usuario != null)
 			return false;
-	} else if (!CorreoUsuario.equals(other.CorreoUsuario))
+	} else if (!correo_usuario.equals(other.correo_usuario))
 		return false;
 	if (idusuario != other.idusuario)
 		return false;
-	if (modeloMoto == null) {
-		if (other.modeloMoto != null)
+	if (modelo_moto == null) {
+		if (other.modelo_moto != null)
 			return false;
-	} else if (!modeloMoto.equals(other.modeloMoto))
+	} else if (!modelo_moto.equals(other.modelo_moto))
 		return false;
 	if (nombre == null) {
 		if (other.nombre != null)
 			return false;
 	} else if (!nombre.equals(other.nombre))
 		return false;
-	if (telefonoE == null) {
-		if (other.telefonoE != null)
+	if (tlf_emergencia == null) {
+		if (other.tlf_emergencia != null)
 			return false;
-	} else if (!telefonoE.equals(other.telefonoE))
+	} else if (!tlf_emergencia.equals(other.tlf_emergencia))
 		return false;
-	if (telefonoU == null) {
-		if (other.telefonoU != null)
+	if (tlf_usuario == null) {
+		if (other.tlf_usuario != null)
 			return false;
-	} else if (!telefonoU.equals(other.telefonoU))
+	} else if (!tlf_usuario.equals(other.tlf_usuario))
 		return false;
 	return true;
 }
@@ -192,8 +193,9 @@ public boolean equals(Object obj) {
 
 @Override
 public String toString() {
-	return "Usuario [idusuario=" + idusuario + ", nombre=" + nombre + ", telefonoU=" + telefonoU + ", CorreoUsuario="
-			+ CorreoUsuario + ", telefonoE=" + telefonoE + ", modeloMoto=" + modeloMoto + "]";
+	return "Usuario [idusuario=" + idusuario + ", nombre=" + nombre + ", tlf_usuario=" + tlf_usuario
+			+ ", correo_usuario=" + correo_usuario + ", tlf_emergencia=" + tlf_emergencia + ", modelo_moto="
+			+ modelo_moto + "]";
 }
 
 
