@@ -54,10 +54,13 @@ public class DatabaseVerticle extends AbstractVerticle {
 		router.get("/api/usuario/:idusuario").handler(this::getUsuario);
 		router.put("/api/usuario").handler(this::putUsuario);
 		router.post("/api/usuario").handler(this::postUsuarioActualiza);
+		router.post("/api/usuario/:idusuario").handler(this::postUsuarioActualizaNombre);
 		router.delete("/api/usuario/:idusuario").handler(this::deleteUsuario);
 //-----------------------------------------------------------------------------------------------------------DISPOSITIVO
 		router.get("/api/sensor/values/dispositivo/:iddispositivo").handler(this::getDispositivo);
 		router.put("/api/dispositivo").handler(this::putDispositivo);
+		router.delete("/api/dispositivo/:iddispositivo").handler(this::deleteDispositivo);
+
 //-----------------------------------------------------------------------------------------------------------gps
         router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
 
@@ -160,6 +163,29 @@ private void putDispositivo(RoutingContext routingContext) {
 				}
 			});
 }
+private void deleteDispositivo(RoutingContext routingContext) {
+	mySQLPool.query(
+			"DELETE  FROM dadproyecto.dispositivo WHERE iddispositivo = " + routingContext.request().getParam("iddispostivo"),
+			res -> {
+				if (res.succeeded()) {
+					RowSet<Row> resultSet = res.result();
+					System.out.println("El numero de elementos obtenidos es " + resultSet.size());
+					JsonArray result = new JsonArray();
+					for (Row row : resultSet) {
+						result.add(
+								JsonObject.mapFrom(new Usuario(row.getInteger("idusuario"), row.getString("nombre"),
+										row.getLong("tlf_usuario"), row.getString("correo_usuario"),
+										row.getLong("tlf_emergencia"), row.getString("modelo_moto"))));
+					}
+					routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
+							.end(result.encodePrettily());
+				} else {
+					routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+							.end((JsonObject.mapFrom(res.cause()).encodePrettily()));
+				}
+
+			});
+}
 //---------------------------------------------------------------------------------------------------------------------------------USUARIOS
 
 
@@ -209,10 +235,33 @@ private void getUsuario(RoutingContext routingContext) {
 					}
 				});
 	}
+	/*
+	private void postUsuarioActualiza(RoutingContext routingContext) {
+		Usuario Usuario = Json.decodeValue(routingContext.getBodyAsString(), Usuario.class);
+		mySQLPool.preparedQuery("UPDATE dadproyecto.usuario (idusuario,nombre,tlf_usuario,correo_usuario,tlf_emergencia,modelo_moto) SET (?,?,?,?,?,?)",
+				Tuple.of(Usuario.getIdusuario(), Usuario.getNombre(),Usuario.getTlf_usuario(), Usuario.getCorreo_usuario(),
+						Usuario.getTlf_emergencia(),Usuario.getModelo_moto()),
+				handler -> {
+					if (handler.succeeded()) {
+						System.out.println(handler.result().rowCount());
+
+						long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
+						Usuario.setIdusuario((int) id);
+
+						routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
+								.end(JsonObject.mapFrom(Usuario).encodePrettily());
+					} else {
+						System.out.println(handler.cause().toString());
+						routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+								.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
+					}
+				});
+	}
+	*/
 	
 	private void postUsuarioActualiza(RoutingContext routingContext) {
 		Usuario Usuario = Json.decodeValue(routingContext.getBodyAsString(), Usuario.class);
-		mySQLPool.preparedQuery("UPDATE dadproyecto.usuario SET idusuario="+Usuario.getIdusuario()+
+		mySQLPool.query("UPDATE dadproyecto.usuario SET idusuario="+Usuario.getIdusuario()+
 				",nombre="+Usuario.getNombre()+
 				",tlf_usuario="+Usuario.getTlf_usuario()+
 				",correo_usuario="+Usuario.getCorreo_usuario()+
@@ -233,7 +282,27 @@ private void getUsuario(RoutingContext routingContext) {
 								.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
 					}
 				});
-	}//(idusuario,nombre,tlf_usuario,correo_usuario,tlf_emergencia,modelo_moto) SET (?,?,?,?,?,?)",
+		}
+	private void postUsuarioActualizaNombre(RoutingContext routingContext) {
+		Usuario Usuario = Json.decodeValue(routingContext.getBodyAsString(), Usuario.class);
+		mySQLPool.query("UPDATE dadproyecto.usuario SET nombre = JOSE WHERE idusuario="+ routingContext.request().getParam("idusuario"),
+				handler -> {
+					if (handler.succeeded()) {
+						System.out.println(handler.result().rowCount());
+
+						long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
+						Usuario.setIdusuario((int) id);
+
+						routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
+								.end(JsonObject.mapFrom(Usuario).encodePrettily());
+					} else {
+						System.out.println(handler.cause().toString());
+						routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+								.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
+					}
+				});
+		}
+	//(idusuario,nombre,tlf_usuario,correo_usuario,tlf_emergencia,modelo_moto) SET (?,?,?,?,?,?)",
 	//Tuple.of(Usuario.getIdusuario(), Usuario.getNombre(),Usuario.getTlf_usuario(), Usuario.getCorreo_usuario(),
 	//Usuario.getTlf_emergencia(),Usuario.getModelo_moto()),
 	private void deleteUsuario(RoutingContext routingContext) {
