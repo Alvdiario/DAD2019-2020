@@ -16,6 +16,8 @@ import io.vertx.sqlclient.PoolOptions;
 import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.RowSet;
 import io.vertx.sqlclient.Tuple;
+import types.Dispositivo;
+import types.Gps;
 import types.SensorValue;
 import types.Usuario;
 
@@ -32,6 +34,8 @@ public class DatabaseVerticle extends AbstractVerticle {
 		Router router = Router.router(vertx);
 		router.route().handler(BodyHandler.create());
 		router.route("/api/usuario*").handler(BodyHandler.create());
+		router.route("/api/dispositivo*").handler(BodyHandler.create());
+
 		//router.route("").handler(BodyHandler.create());
 
 
@@ -46,16 +50,22 @@ public class DatabaseVerticle extends AbstractVerticle {
 		});
 //--------------------------------------------------------------------------------------------------------------------------------------------SENSORES
 		router.get("/api/sensor/values/mpu6050/:idsensor").handler(this::getValueBySensor);
-//		---------------------------------------------------------------------------------------------------------------------------------------USUARIOS
+//------------------------------------------------------------------------------------------------------------------------------------------------USUARIOS
 		router.get("/api/usuario/:idusuario").handler(this::getUsuario);
 		router.put("/api/usuario").handler(this::putUsuario);
 		router.post("/api/usuario").handler(this::postUsuarioActualiza);
 		router.delete("/api/usuario/:idusuario").handler(this::deleteUsuario);
+//-----------------------------------------------------------------------------------------------------------DISPOSITIVO
+		router.get("/api/sensor/values/dispositivo/:iddispositivo").handler(this::getDispositivo);
+		router.put("/api/dispositivo").handler(this::putDispositivo);
+//-----------------------------------------------------------------------------------------------------------gps
+        router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
 
 		
 	}
 
-	private void getValueBySensor(RoutingContext routingContext) {
+	
+private void getValueBySensor(RoutingContext routingContext) {
 		mySQLPool.query("SELECT * FROM dadproyecto.sensor_valor_mpu6050 WHERE idsensor = "
 				+ routingContext.request().getParam("idsensor"), res -> {
 					if (res.succeeded()) {
@@ -78,8 +88,82 @@ public class DatabaseVerticle extends AbstractVerticle {
 
 				});
 	}
+//---------------------------------------------------------------------------------------------------------------------------------gps
+
+private void getGps(RoutingContext routingContext) {
+	mySQLPool.query("SELECT * FROM dadproyecto.sensor_valor_gps WHERE idsensor = "+ routingContext.request().getParam("idsensor"),
+			res->{
+				 if(res.succeeded()) {
+					 RowSet<Row> resultSet = res.result();
+					 System.out.println("El numero de elementos obtenidos es "+ resultSet.size());
+					 JsonArray result = new JsonArray();
+					 for (Row row : resultSet) {
+						 result.add(JsonObject.mapFrom(new Gps(
+								 row.getInteger("idsensor_valor_gps"),
+								 row.getInteger("idsensor"),
+								 row.getString("value")
+								 )));
+					 }
+					 routingContext.response().setStatusCode(200).putHeader("content-type", "application/json").end(result.encodePrettily());
+				 }else {
+					 routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+						.end((JsonObject.mapFrom(res.cause()).encodePrettily()));
+				 }
+		
+	});
+}
+//---------------------------------------------------------------------------------------------------------------------------------DISPOSITIVO
+
+private void getDispositivo(RoutingContext routingContext) {
+	mySQLPool.query("SELECT * FROM dadproyecto.dispositivo WHERE iddispositivo = "+ routingContext.request().getParam("iddispositivo"),
+			res->{
+				 if(res.succeeded()) {
+					 RowSet<Row> resultSet = res.result();
+					 System.out.println("El numero de elementos obtenidos es "+ resultSet.size());
+					 JsonArray result = new JsonArray();
+					 for (Row row : resultSet) {
+						 result.add(JsonObject.mapFrom(new Dispositivo(
+								 row.getInteger("iddispositivo"),
+								 row.getString("ip"),
+								 row.getString("nombre"),
+								 row.getInteger("idusuario"),
+								 row.getLong("initialtimestamp")
+								 )));
+					 }
+					 routingContext.response().setStatusCode(200).putHeader("content-type", "application/json").end(result.encodePrettily());
+				 }else {
+					 routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+						.end((JsonObject.mapFrom(res.cause()).encodePrettily()));
+				 }
+		
+	});
+}
+private void putDispositivo(RoutingContext routingContext) {
+	
+	Dispositivo dispositivo = Json.decodeValue(routingContext.getBodyAsString(), Dispositivo.class);
+	mySQLPool.preparedQuery("INSERT INTO dadproyecto.dispositivo (iddispositivo,ip,nombre,idusuario,initialtimestamp) VALUES (?,?,?,?,?)",
+			Tuple.of(dispositivo.getIddispositivo(), dispositivo.getIp(), dispositivo.getNombre(),dispositivo.getIdusuario(),
+					dispositivo.getInitialtimestamp()),
+			handler -> {
+				if (handler.succeeded()) {
+					System.out.println(handler.result().rowCount());
+					
+				long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
+					dispositivo.setIdusuario( (int)id);
+					
+					routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
+							.end(JsonObject.mapFrom(dispositivo).encodePrettily());
+				} else {
+					System.out.println(handler.cause().toString());
+					routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+							.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
+				}
+			});
+}
 //---------------------------------------------------------------------------------------------------------------------------------USUARIOS
-	private void getUsuario(RoutingContext routingContext) {
+
+
+private void getUsuario(RoutingContext routingContext) {
 		mySQLPool.query(
 				"SELECT * FROM dadproyecto.usuario WHERE idusuario = " + routingContext.request().getParam("idusuario"),
 				res -> {
@@ -128,9 +212,12 @@ public class DatabaseVerticle extends AbstractVerticle {
 	
 	private void postUsuarioActualiza(RoutingContext routingContext) {
 		Usuario Usuario = Json.decodeValue(routingContext.getBodyAsString(), Usuario.class);
-		mySQLPool.preparedQuery("UPDATE dadproyecto.usuario (idusuario,nombre,tlf_usuario,correo_usuario,tlf_emergencia,modelo_moto) SET (?,?,?,?,?,?)",
-				Tuple.of(Usuario.getIdusuario(), Usuario.getNombre(),Usuario.getTlf_usuario(), Usuario.getCorreo_usuario(),
-						Usuario.getTlf_emergencia(),Usuario.getModelo_moto()),
+		mySQLPool.preparedQuery("UPDATE dadproyecto.usuario SET idusuario="+Usuario.getIdusuario()+
+				",nombre="+Usuario.getNombre()+
+				",tlf_usuario="+Usuario.getTlf_usuario()+
+				",correo_usuario="+Usuario.getCorreo_usuario()+
+				",tlf_emergencia="+Usuario.getTlf_emergencia()
+				+",modelo_moto="+Usuario.getModelo_moto(),
 				handler -> {
 					if (handler.succeeded()) {
 						System.out.println(handler.result().rowCount());
@@ -146,7 +233,9 @@ public class DatabaseVerticle extends AbstractVerticle {
 								.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
 					}
 				});
-	}//mySQLPool.Query("UPDATE dadproyecto.usuario "(idusuario,nombre,tlf_usuario,correo_usuario,tlf_emergencia,modelo_moto)SET" +Usuario.,
+	}//(idusuario,nombre,tlf_usuario,correo_usuario,tlf_emergencia,modelo_moto) SET (?,?,?,?,?,?)",
+	//Tuple.of(Usuario.getIdusuario(), Usuario.getNombre(),Usuario.getTlf_usuario(), Usuario.getCorreo_usuario(),
+	//Usuario.getTlf_emergencia(),Usuario.getModelo_moto()),
 	private void deleteUsuario(RoutingContext routingContext) {
 		mySQLPool.query(
 				"DELETE  FROM dadproyecto.usuario WHERE idusuario = " + routingContext.request().getParam("idusuario"),
