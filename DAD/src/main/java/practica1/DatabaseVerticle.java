@@ -41,13 +41,14 @@ public class DatabaseVerticle extends AbstractVerticle {
 		});
 		router.put("/api/dispositivo").handler(this::putDispositivo);
 		router.get("/api/sensor/values/dispositivo/:iddispositivo").handler(this::getDispositivo);
-		
+		router.delete("/api/dispositivo");
 		router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
 		router.get("/api/sensor/values/mpu6050/:idsensor").handler(this::getValueBySensor);
 		//TODO		router.get("/api/sensor/values/usuario/:idsensor").handler(this::getUsuario);
 
+
 		
-		//router.get("/api/sensor/values/:idsensor").handler(this::getValueBySensor);
+		
 	}
 private void getValueBySensor(RoutingContext routingContext) {
 	mySQLPool.query("SELECT * FROM dadproyecto.sensor_valor_mpu6050 WHERE idsensor = "+ routingContext.request().getParam("idsensor"),
@@ -128,26 +129,44 @@ private void getDispositivo(RoutingContext routingContext) {
 
 private void putDispositivo(RoutingContext routingContext) {
 	
-	Dispositivo dispositivo = Json.decodeValue(routingContext.getBodyAsString(), Dispositivo.class);
-	mySQLPool.preparedQuery(
-			"INSERT INTO dadproyecto.dispositivo (iddispositivo,ip,nombre,idusuario,initialtimestamp) VALUES (?,?,?,?,?)",
-			Tuple.of(dispositivo.getIddispositivo(), dispositivo.getIp(), dispositivo.getNombre(),dispositivo.getIdusuario(),
-					dispositivo.getTimestamp()),
-			handler -> {
-				if (handler.succeeded()) {
-					System.out.println(handler.result().rowCount());
-					
-				long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
-					dispositivo.setIdusuario( (int)id);
+        Dispositivo dispositivo = Json.decodeValue(routingContext.getBodyAsString(), Dispositivo.class);
+        mySQLPool.preparedQuery("INSERT INTO Dispositivo(iddispositivo, ip,nombre,idusuario,initialtimestamp) VALUES (?,?,?,?,?)", 
+        		Tuple.of(dispositivo.getIddispositivo(),dispositivo.getIp(),dispositivo.getNombre(),
+        				dispositivo.getIdusuario(),dispositivo.getTimestamp() ),
+                handler ->{
+                    if(handler.succeeded()) {
+                        System.out.println("Filas añadidas en Dispositivo: " + handler.result().rowCount());
+
+                        long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
+                        dispositivo.setIddispositivo((int)id);
+
+                        routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
+                        .end(JsonObject.mapFrom(dispositivo).encodePrettily());
+                    }else {
+                        System.out.println(handler.cause().toString());
+                        routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
+                        .end(JsonObject.mapFrom(handler.cause()).encodePrettily());
+                    }
+                });
+    }
+
+private void deleteDispositivo(RoutingContext routingContext) {
+	Dispositivo dispo = Json.decodeValue(routingContext.getBodyAsString(), Dispositivo.class);
+	mySQLPool.preparedQuery("DELETE FROM bd_dad.dadproyecto.dispositivo where iddispositivo = " + dispo.getIddispositivo(),
+			handler ->{
+				if(handler.succeeded()) {
+					System.out.println("Filas eliminadas en Dispositivo: " + handler.result().rowCount());
 					
 					routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
-							.end(JsonObject.mapFrom(dispositivo).encodePrettily());
-				} else {
+					.end(JsonObject.mapFrom(dispo).encodePrettily());
+				}else {
 					System.out.println(handler.cause().toString());
-					routingContext.response().setStatusCode(401).putHeader("content-type", "application/json")
-							.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
+					
+					routingContext.response().setStatusCode(401)
+					.putHeader("content-type","application/json")
+					.end((JsonObject.mapFrom(handler.cause()).encodePrettily()));
 				}
 			});
-}
 
+}
 }
