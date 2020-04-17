@@ -49,19 +49,18 @@ public class DatabaseVerticle extends AbstractVerticle {
 
 		});
 //--------------------------------------------------------------------------------------------------------------------------------------------SENSORES
-		router.get("/api/sensor/values/mpu6050/:idsensor").handler(this::getValueBySensor);
+		router.get("/api/mpu6050/:idsensor").handler(this::getValueBySensor);
 //------------------------------------------------------------------------------------------------------------------------------------------------USUARIOS
 		router.get("/api/usuario/:idusuario").handler(this::getUsuario);
 		router.put("/api/usuario").handler(this::putUsuario);
-		router.post("/api/usuario").handler(this::postUsuarioActualiza);
-		router.post("/api/usuario/:idusuario").handler(this::postUsuarioActualizaNombre);
+		router.post("/api/usuario").handler(this::postUsuarioActualiza);  //TODO
+		router.post("/api/usuario/:idusuario").handler(this::postUsuarioActualizaNombre); //TODO
 		router.delete("/api/usuario/:idusuario").handler(this::deleteUsuario);
 //-----------------------------------------------------------------------------------------------------------DISPOSITIVO
-		router.get("/api/sensor/values/dispositivo/:iddispositivo").handler(this::getDispositivo);
+		router.get("/api/dispositivo/:iddispositivo").handler(this::getDispositivo);
 		router.put("/api/dispositivo").handler(this::putDispositivo);
-		router.delete("/api/dispositivo/:iddispositivo").handler(this::deleteDispositivo);
-
-//-----------------------------------------------------------------------------------------------------------gps
+		router.delete("/api/dispositivo/delete/:iddispositivo").handler(this::deleteDispositivo);
+//-----------------------------------------------------------------------------------------------------------GPS
         router.get("/api/sensor/values/gps/:idsensor").handler(this::getGps);
 
 		
@@ -169,7 +168,7 @@ private void deleteDispositivo(RoutingContext routingContext) {
 			res -> {
 				if (res.succeeded()) {
 					RowSet<Row> resultSet = res.result();
-					System.out.println("El numero de elementos obtenidos es " + resultSet.size());
+					System.out.println("El numero de elementos eliminados es " + res.result().rowCount());
 					JsonArray result = new JsonArray();
 					for (Row row : resultSet) {
 						result.add(
@@ -225,7 +224,7 @@ private void getUsuario(RoutingContext routingContext) {
 						Usuario.getTlf_emergencia(),Usuario.getModelo_moto()),
 				handler -> {
 					if (handler.succeeded()) {
-						System.out.println(handler.result().rowCount());
+						System.out.println("El numero de elementos insertado es:"+handler.result().rowCount());
 
 						long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
 						Usuario.setIdusuario((int) id);
@@ -248,10 +247,8 @@ private void getUsuario(RoutingContext routingContext) {
 				handler -> {
 					if (handler.succeeded()) {
 						System.out.println(handler.result().rowCount());
-
 						long id = handler.result().property(MySQLClient.LAST_INSERTED_ID);
 						Usuario.setIdusuario((int) id);
-
 						routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
 								.end(JsonObject.mapFrom(Usuario).encodePrettily());
 					} else {
@@ -265,12 +262,11 @@ private void getUsuario(RoutingContext routingContext) {
 	
 	private void postUsuarioActualiza(RoutingContext routingContext) {
 		Usuario Usuario = Json.decodeValue(routingContext.getBodyAsString(), Usuario.class);
-		mySQLPool.query("UPDATE dadproyecto.usuario SET idusuario="+Usuario.getIdusuario()+
-				",nombre="+Usuario.getNombre()+
+		mySQLPool.query("UPDATE dadproyecto.usuario SET nombre='"+Usuario.getNombre()+"'"+
 				",tlf_usuario="+Usuario.getTlf_usuario()+
-				",correo_usuario="+Usuario.getCorreo_usuario()+
+				",correo_usuario='"+Usuario.getCorreo_usuario()+"'"+
 				",tlf_emergencia="+Usuario.getTlf_emergencia()
-				+",modelo_moto="+Usuario.getModelo_moto(),
+				+",modelo_moto='"+Usuario.getModelo_moto()+"'"+"WHERE idusuario="+Usuario.getIdusuario(),
 				handler -> {
 					if (handler.succeeded()) {
 						System.out.println(handler.result().rowCount());
@@ -289,7 +285,7 @@ private void getUsuario(RoutingContext routingContext) {
 		}
 	private void postUsuarioActualizaNombre(RoutingContext routingContext) {
 		Usuario Usuario = Json.decodeValue(routingContext.getBodyAsString(), Usuario.class);
-		mySQLPool.query("UPDATE dadproyecto.usuario SET nombre = JOSE WHERE idusuario="+ routingContext.request().getParam("idusuario"),
+		mySQLPool.query("UPDATE dadproyecto.usuario SET nombre = 'JOSE' WHERE idusuario="+ routingContext.request().getParam("idusuario"),
 				handler -> {
 					if (handler.succeeded()) {
 						System.out.println(handler.result().rowCount());
@@ -315,7 +311,7 @@ private void getUsuario(RoutingContext routingContext) {
 				res -> {
 					if (res.succeeded()) {
 						RowSet<Row> resultSet = res.result();
-						System.out.println("El numero de elementos obtenidos es " + resultSet.size());
+						System.out.println("El numero de elementos eliminados es " + resultSet.rowCount());
 						JsonArray result = new JsonArray();
 						for (Row row : resultSet) {
 							result.add(
