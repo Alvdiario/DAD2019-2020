@@ -2,6 +2,7 @@ package types;
 
 public class Dispositivo {
 
+
 	
 	private Integer iddispositivo;
 	private String ip ;
@@ -121,8 +122,13 @@ public class Dispositivo {
 	
 	
 	
+
+	
+
+
 	
 	
 	
 	
 }
+
