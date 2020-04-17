@@ -1,6 +1,5 @@
 package practica1;
 
-import io.netty.handler.codec.http.HttpContentEncoder.Result;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.json.Json;

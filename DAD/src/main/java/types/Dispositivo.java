@@ -6,18 +6,10 @@ public class Dispositivo {
 	private String nombre;
 	private int idusuario;
 	private Long initialtimestamp;
-	
-	
-	
-	
-	
+
 	public Dispositivo() {
 		super();
 	}
-
-
-
-
 
 	public Dispositivo(int iddispositivo, String ip, String nombre, int idusuario, Long initialtimestamp) {
 		super();
@@ -28,99 +20,50 @@ public class Dispositivo {
 		this.initialtimestamp = initialtimestamp;
 	}
 
-
-
-
-
 	public int getIddispositivo() {
 		return iddispositivo;
 	}
-
-
-
-
 
 	public void setIddispositivo(int iddispositivo) {
 		this.iddispositivo = iddispositivo;
 	}
 
-
-
-
-
 	public String getIp() {
 		return ip;
 	}
-
-
-
-
 
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
 
-
-
-
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
-
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
-
-
-
 	public int getIdusuario() {
 		return idusuario;
 	}
-
-
-
-
 
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
 
-
-
-
-
 	public Long getInitialtimestamp() {
 		return initialtimestamp;
 	}
-
-
-
-
 
 	public void setInitialtimestamp(Long initialtimestamp) {
 		this.initialtimestamp = initialtimestamp;
 	}
 
-
-
-
-
-	@Override
 	public String toString() {
 		return "Dispositivo [iddispositivo=" + iddispositivo + ", ip=" + ip + ", nombre=" + nombre + ", idusuario="
 				+ idusuario + ", initialtimestamp=" + initialtimestamp + "]";
 	}
-
-
-
-
 
 	@Override
 	public int hashCode() {
@@ -134,11 +77,7 @@ public class Dispositivo {
 		return result;
 	}
 
-
-
-
-
-	@Override
+	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -169,6 +108,4 @@ public class Dispositivo {
 		return true;
 	}
 
-	
-	
 }

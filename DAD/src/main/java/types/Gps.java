@@ -1,8 +1,5 @@
 package types;
 
-
-
-
 public class Gps {
 	private Integer idsensor_valor_mpu6050;
 	private Integer idsensor;
