@@ -165,7 +165,7 @@ private void putDispositivo(RoutingContext routingContext) {
 }
 private void deleteDispositivo(RoutingContext routingContext) {
 	mySQLPool.query(
-			"DELETE  FROM dadproyecto.dispositivo WHERE iddispositivo = " + routingContext.request().getParam("iddispostivo"),
+			"DELETE  FROM dadproyecto.dispositivo WHERE iddispositivo = "+ routingContext.request().getParam("iddispositivo"),
 			res -> {
 				if (res.succeeded()) {
 					RowSet<Row> resultSet = res.result();
@@ -173,9 +173,12 @@ private void deleteDispositivo(RoutingContext routingContext) {
 					JsonArray result = new JsonArray();
 					for (Row row : resultSet) {
 						result.add(
-								JsonObject.mapFrom(new Usuario(row.getInteger("idusuario"), row.getString("nombre"),
-										row.getLong("tlf_usuario"), row.getString("correo_usuario"),
-										row.getLong("tlf_emergencia"), row.getString("modelo_moto"))));
+								JsonObject.mapFrom(new Dispositivo( row.getInteger("iddispositivo"),
+										 row.getString("ip"),
+										 row.getString("nombre"),
+										 row.getInteger("idusuario"),
+										 row.getLong("initialtimestamp")
+										 )));
 					}
 					routingContext.response().setStatusCode(200).putHeader("content-type", "application/json")
 							.end(result.encodePrettily());
@@ -186,6 +189,7 @@ private void deleteDispositivo(RoutingContext routingContext) {
 
 			});
 }
+
 //---------------------------------------------------------------------------------------------------------------------------------USUARIOS
 
 
