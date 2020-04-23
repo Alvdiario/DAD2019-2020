@@ -102,6 +102,9 @@ private static void init(MqttServer mqttServer) {
 			case TOPIC_DOMO:
 				System.out.println("DomoState published");
 				break;
+			case TOPIC_GPS:
+				System.out.println("Gps published");
+				break;
 			}
 			for (MqttEndpoint subscribed: clients.get(message.topicName())) {
 				subscribed.publish(message.topicName(), message.payload(), message.qosLevel(), message.isDup(), message.isRetain());

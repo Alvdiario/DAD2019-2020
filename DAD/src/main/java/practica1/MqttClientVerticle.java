@@ -73,7 +73,7 @@ public class MqttClientVerticle  extends AbstractVerticle {
 						vertx.setPeriodic(10000, handlerPeriodic -> {
 							Gps gps= new Gps(1, 2, "$GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68");
 							mqttClient.publish(MqttServerVerticle.TOPIC_GPS,
-									Buffer.buffer(Json.encodePrettily(gps)), MqttQoS.AT_LEAST_ONCE, false,
+									Buffer.buffer(Json.encodePrettily(gps.getLocalizacion())), MqttQoS.AT_LEAST_ONCE, false,
 									true);
 						});
 
