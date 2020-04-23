@@ -11,6 +11,7 @@ import io.vertx.core.json.Json;
 import io.vertx.mqtt.MqttClient;
 import io.vertx.mqtt.MqttClientOptions;
 import io.vertx.mqtt.impl.MqttClientImpl;
+import types.Gps;
 
 public class MqttClientVerticle  extends AbstractVerticle {
 	private static Boolean sync = new Boolean(true);
@@ -42,6 +43,7 @@ public class MqttClientVerticle  extends AbstractVerticle {
 		});
 
 		Random randomTimeSeconds = new Random();
+		
 
 		mqttClient.connect(1885, "localhost", handler -> {
 			if (handler.result().code() == MqttConnectReturnCode.CONNECTION_ACCEPTED) {
@@ -62,7 +64,27 @@ public class MqttClientVerticle  extends AbstractVerticle {
 												+ " channel " + handlerSubscribe.cause().toString());
 							}
 						});
+				
+				mqttClient.subscribe(MqttServerVerticle.TOPIC_GPS, MqttQoS.AT_LEAST_ONCE.value(), handlerSubscribe -> {
+					if (handlerSubscribe.succeeded()) {
+						System.out.println(
+								classInstanceId + " subscribed to " + MqttServerVerticle.TOPIC_GPS + " channel");
 
+						vertx.setPeriodic(10000, handlerPeriodic -> {
+							Gps gps= new Gps(1, 2, "$GPRMC,225446,A,4916.45,N,12311.12,W,000.5,054.7,191194,020.3,E*68");
+							mqttClient.publish(MqttServerVerticle.TOPIC_GPS,
+									Buffer.buffer(Json.encodePrettily(gps)), MqttQoS.AT_LEAST_ONCE, false,
+									true);
+						});
+
+					} else {
+						System.out.println(classInstanceId + " NOT subscribed to " + MqttServerVerticle.TOPIC_GPS
+								+ " channel " + handlerSubscribe.cause().toString());
+					}
+				});
+
+				
+				
 				mqttClient.subscribe(MqttServerVerticle.TOPIC_INFO, MqttQoS.AT_LEAST_ONCE.value(), handlerSubscribe -> {
 					if (handlerSubscribe.succeeded()) {
 						System.out.println(

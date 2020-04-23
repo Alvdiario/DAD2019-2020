@@ -23,7 +23,8 @@ public class MqttServerVerticle extends AbstractVerticle {
 	public static final String TOPIC_LIGHTS = "lights";
 	public static final String TOPIC_INFO = "info";
 	public static final String TOPIC_DOMO = "domo";
-	
+	public static final String TOPIC_GPS = "gps";
+
 	public static final SetMultimap<String, MqttEndpoint> clients = LinkedHashMultimap.create();
 	
 	public void start(Promise<Void> promise) {
