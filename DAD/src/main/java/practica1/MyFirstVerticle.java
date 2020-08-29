@@ -22,6 +22,7 @@ public class MyFirstVerticle extends AbstractVerticle {
 		//vertx.deployVerticle(MySencondVerticle.class.getName());
 		//vertx.deployVerticle(MyThirdVerticle.class.getName());
 		vertx.deployVerticle(DatabaseVerticle.class.getName());
+		vertx.deployVerticle(TelegramBaseVerticle.class.getName());
 		//vertx.deployVerticle(WorkerVerticle.class.getName());
 //		EventBus eventBus = vertx.eventBus();
 //		vertx.setPeriodic(4000, action -> {
